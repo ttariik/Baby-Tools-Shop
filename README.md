@@ -273,22 +273,22 @@ Products can be added through:
 ## Screenshots
 
 ### Home Page with Login
-![Home Page with Login](project_images/capture_20220323080815407.jpg)
+![Home Page with Login](/baby-tools-shop/project_images/capture_20220323080815407.jpg)
 
 ### Home Page with Product Filter
-![Home Page with Filter](project_images/capture_20220323080840305.jpg)
+![Home Page with Filter](/baby-tools-shop/project_images/capture_20220323080840305.jpg)
 
 ### Product Detail Page
-![Product Detail Page](project_images/capture_20220323080934541.jpg)
+![Product Detail Page](/baby-tools-shop/project_images/capture_20220323080934541.jpg)
 
 ### Home Page (Not Logged In)
-![Home Page No Login](project_images/capture_20220323080953570.jpg)
+![Home Page No Login](/baby-tools-shop/project_images/capture_20220323080953570.jpg)
 
 ### User Registration Page
-![Register Page](project_images/capture_20220323081016022.jpg)
+![Register Page](/baby-tools-shop/project_images/capture_20220323081016022.jpg)
 
 ### User Login Page
-![Login Page](project_images/capture_20220323081044867.jpg)
+![Login Page](/baby-tools-shop/project_images/capture_20220323081044867.jpg)
 
 ---
 
