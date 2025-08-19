@@ -35,7 +35,7 @@ The primary purpose of this repository is to provide a production-ready, contain
 
 1. **Clone the repository**:
    ```bash
-   git clone git@github.com:Developer-Akademie-GmbH/baby-tools-shop.git
+   git clone  git@github.com:ttariik/Baby-Tools-Shop.git
    cd baby-tools-shop
    ```
 
