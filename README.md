@@ -29,33 +29,81 @@ The primary purpose of this repository is to provide a production-ready, contain
 
 - Docker installed on your system
 - Git for cloning the repository
-- Port 8025 available on your machine
 
 ### Quick Setup
 
 1. **Clone the repository**:
    ```bash
-   git clone  git@github.com:ttariik/Baby-Tools-Shop.git
-   cd baby-tools-shop
+   git clone git@github.com:ttariik/Baby-Tools-Shop.git
+   cd Baby-Tools-Shop/baby-tools-shop
    ```
 
-2. **Build and run the Docker container**:
+2. **Configure environment (Optional)**:
+   ```bash
+   # Copy the environment template
+   cp env.example .env
+   
+   # Edit .env file with your specific configuration
+   # Important: Update ALLOWED_HOSTS for production deployment
+   nano .env
+   ```
+
+3. **Build and run the Docker container**:
    ```bash
    docker build -t baby-tools-shop .
    docker run -p 8025:8025 baby-tools-shop
    ```
 
-3. **Access the application**:
+   **For production deployment with custom environment**:
+   ```bash
+   # Run with environment file
+   docker run -p 8025:8025 --env-file .env baby-tools-shop
+   
+   # Or run with specific environment variables
+   docker run -p 8025:8025 \
+     -e DJANGO_DEBUG=False \
+     -e DJANGO_SECRET_KEY="your-production-secret" \
+     -e ALLOWED_HOSTS="localhost,your-domain.com,your-server-ip" \
+     baby-tools-shop
+   ```
+
+4. **Access the application**:
    Open your browser and navigate to `http://localhost:8025`
 
 The application will be running with a pre-configured SQLite database and all necessary migrations applied automatically.
 
-**Important:** After first startup, create an admin user to access the management interface:
+### Admin User Setup
+
+After first startup, create an admin user to access the management interface:
+
 ```bash
+# Connect to the running container
 docker exec -it baby-shop bash
+
+# Create superuser (follow the prompts)
 python manage.py createsuperuser
+```
+
+**Expected output:**
+```
+Username (leave blank to use 'appuser'): admin
+Email address: admin@example.com
+Password: 
+Password (again): 
+Superuser created successfully.
+```
+
+```bash
+# Exit the container
 exit
 ```
+
+**Access the admin panel:**
+- URL: `http://localhost:8025/admin`
+- Use the credentials you just created to log in
+- From here you can manage users, products, and all application data
+
+**Note:** For security reasons, use a strong password for production deployments.
 
 ## Usage
 
@@ -104,15 +152,37 @@ volumes:
   media_volume:
 ```
 
-### Environment Variables
+### Environment Configuration
 
-The application supports the following environment variables for configuration:
+The application uses environment variables for configuration. A template file `env.example` is provided with all available options.
+
+#### Setting up Environment Variables
+
+1. **Copy the template**:
+   ```bash
+   cp env.example .env
+   ```
+
+2. **Edit the .env file** with your specific configuration:
+   ```bash
+   nano .env
+   ```
+
+3. **Important: Configure ALLOWED_HOSTS for your deployment**:
+   - For local development: Use default values
+   - For production: Add your domain/IP addresses
+   - Example: `ALLOWED_HOSTS=localhost,127.0.0.1,your-domain.com,your-server-ip`
+
+#### Available Environment Variables
 
 | Variable | Default Value | Description |
 |----------|---------------|-------------|
 | `DJANGO_SECRET_KEY` | Auto-generated insecure key | Django secret key for production |
 | `DJANGO_DEBUG` | `True` | Enable/disable Django debug mode |
 | `PORT` | `8025` | Port on which the application runs |
+| `ALLOWED_HOSTS` | `localhost,127.0.0.1,[::1]` | Comma-separated list of allowed hosts |
+
+For a complete list of available variables, see the `env.example` file.
 
 ### Production Deployment
 
