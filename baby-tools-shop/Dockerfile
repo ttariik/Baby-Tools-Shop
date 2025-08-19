@@ -35,8 +35,8 @@ RUN python manage.py migrate
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Expose port 8025 as required by checklist
-EXPOSE ${PORT}
+# Expose port 8025 for the Django application
+EXPOSE 8025
 
 # Add non-root user for security
 RUN adduser --disabled-password --gecos '' appuser
