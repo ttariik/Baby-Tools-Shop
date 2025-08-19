@@ -1,6 +1,7 @@
+# User authentication views with German localization
 from django.shortcuts import redirect, render
-from . forms import LoginForm, RegisterForm
-from django.contrib.auth import authenticate,login,logout
+from .forms import LoginForm, RegisterForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def user_register(request):
