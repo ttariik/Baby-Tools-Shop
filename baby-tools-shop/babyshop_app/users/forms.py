@@ -3,6 +3,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 class RegisterForm(UserCreationForm):
+    """
+    Custom registration form with German placeholders and improved styling.
+    Extends Django's UserCreationForm to include additional fields.
+    """
     first_name=forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control',
         'placeholder':'Vorname'
@@ -35,6 +39,9 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
+    """
+    Custom login form with German placeholders and validation.
+    """
     username=forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control',
         'placeholder':'Benutzername'
